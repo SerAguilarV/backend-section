@@ -14,10 +14,18 @@ const {HomeController} = require("../controllers");
 const {HomeRoutes} = require("../routes/index.routes");
 const Routes = require("../routes");
 
+//Modules
+const {User, Idea, Comment} = require("../models");
+
 
 const container = createContainer();
 
 container
+.register({
+    User: asValue(User),
+    Idea: asValue(Idea),
+    Comment: asValue(Comment)
+})
 .register({
     app: asClass(app).singleton(),
     router: asFunction(Routes).singleton(),
