@@ -8,7 +8,7 @@ class UserRepository extends Baserepository{
         _user = User;
     }
 
-    async getUserByUserName(username){
+    async getUserByUsername(username){
         return await _user.findOne({username});
     }
 }

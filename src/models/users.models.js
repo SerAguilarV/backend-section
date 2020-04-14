@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const {compareSync, hashSync, genSaltSync} = require("bcryptjs");
+const {compareSync, compare, hashSync, genSaltSync} = require("bcryptjs");
 // compareSync compara contraseñas
 // hashSync crea has de contraseña
 // agrega salt a contraseña
 
 const UserSchema = new Schema({
     name: { type: String, required: true},
-    userName: {type: String, required: true},
+    username: {type: String, required: true},
     password: {type: String, required: true}
 });
 
@@ -20,6 +20,8 @@ UserSchema.methods.toJSON = function(){
 }
 
 UserSchema.methods.ComparePasswords = function(password){
+    // console.log(this.password)
+    // console.log(password)
     return compareSync(password, this.password);
 }
 
