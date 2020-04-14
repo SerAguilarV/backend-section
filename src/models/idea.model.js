@@ -6,7 +6,7 @@ const IdeaSchema = new Schema ({
     description: {type: String},
     upVotes: [{type: Boolean}],
     author: {type: Schema.Types.ObjectId, ref: "user", required : true, autopopulate: true},
-    comments: {type: Schema.Types.ObjectId, ref: "comment", required : true, autopopulate: true}
+    comments: {type: Schema.Types.ObjectId, ref: "comment", autopopulate: true}
 });
 
 IdeaSchema.plugin(require("mongoose-autopopulate"))
